@@ -30,8 +30,10 @@ const Dashboard = () => {
   };
 
   const getD = () => {
-    const { base58 } = window.tronWeb?.defaultAddress;
-    const address = window.tronWeb?.address.toHex(base58);
+    const tronweb = window.tronWeb;
+    if (!tronweb) return;
+    const { base58 } = tronweb.defaultAddress;
+    const address = tronweb.address.toHex(base58);
     if (!address) return;
     const myCollection = doc(db, "users", address);
 

@@ -90,6 +90,9 @@ Get [Nile testnet](https://nileex.io/join/getJoinPage) to test the platfrom.
 
 [Nile: Faucet](https://nileex.io/join/getJoinPage)
 
+## Live Link
+[Live Server](https://tronpowerserver.onrender.com)
+
 
 
 
