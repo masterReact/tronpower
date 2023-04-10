@@ -14,7 +14,7 @@ const Dashboard = () => {
   const getAddy = async () => {
     const not = toast.loading("⏳ Loading userdetails...");
     const tronWeb = window.tronLink;
-    await tronWeb.request({
+    await tronWeb?.request({
       method: "tron_requestAccounts",
     });
     const { base58 } = window.tronWeb?.defaultAddress;
