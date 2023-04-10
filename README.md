@@ -1,70 +1,98 @@
-# Getting Started with TRON POWER
+## TRON POWER💡
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Tron Power is a energy trading platform that encorages buying and selling of renewable energy.
+![image](https://gateway.pinata.cloud/ipfs/QmZby1gWAKWdkGJcaWFE83ZGTBTQCLDTdQZah5QRzFrGGN?_gl=1*cncir5*rs_ga*YWJkOGNiNjUtYjFjNy00YjMwLWE0YTktMTMzNjYzM2IzYTJh*rs_ga_5RMPXG14TE*MTY4MTA5MTk0NC41LjAuMTY4MTA5MTk0NC42MC4wLjA.)
 
-## Available Scripts
+## OUR GOAL
 
-In the project directory, you can run:
+Our vision is to encorage the use of Blockchain technology, smart meter and smart grids (SG) for trading electricity.
+Smart meters are devices that measure and monitor energy consumption in homes and businesses. They are **Important** for reducing energy consumption and carbon emission.
+Tron Power is here to utilize blockchain technology to create a secured, transparent and decentrailzed system for monitoring energy consumption and transactions.
 
-### `npm start`
+### 🕸 Problem Descriptions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Limited Automation: The energy industry relies heavily on manual processes, which can be time-consuming, costly, and error-prone. This can lead to delay of transactions and increased cost.
+- Limited Innovation: The energy industry has been slow to adopt new technologies and innovations, which can be limit its ability to adapt to changing market conditions and customer needs.
+- Lack of Transparency: There's lack of transparency which can lead to disputes, fraud and other inefficeinces.
+- Centralization: The energy industry is heavily centralized, with few large players dominating the market. This can lead to market ineffiencies, lack of transparency, and limited competition.
+- Limitations
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### ✅ Solution Approach
 
-### `npm test`
+We are targeting the three main bodies in trading electriicty
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Prosumer: Someone that produces Energy and consumes Energy
+- Consumer: Someone that consumes Energy only
+- Producer: Someone that produces Energy only
 
-### `npm run build`
+Our aim is to promote indiviuals to be able to generate renewable energy and sell to either neighbour or grid companies.
+Example
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> ALICE consumes electriicty from national grid and also makes use of solar panels to generate electricity, if alice is able to generate extra energy alice can easily sign up on tron power as a prosumer and sell his energy to his neighbours.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Why blockchain? Why Tron Power?
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Decentralization: Blockchain technology enables the creation of a decentralized system where energy can be traded directly between producers and consumers without the need for intermediaries. This can increase competition, reduce costs, and increase transparency.
+- Elimination of intermediaries: Blockchain technology can eliminate intermediaries such as brokers, utilities, and grid operators by allowing energy producers and consumers to transact directly. This can reduce costs and increase transparency.
+- Transparency: Blockchain technology provides a transparent and immutable record of transactions, which can help to reduce disputes, fraud, and other inefficiencies.
+- Automation: Blockchain technology can automate many of the manual processes involved in energy trading, reducing the time and cost associated with traditional trading methods. This can also help to reduce the risk of errors and delays.
+- Innovation: Blockchain technology provides a platform for innovation, allowing for the development of new business models and the creation of new opportunities for energy trading.
 
-### `npm run eject`
+### What TRON POWER OFFERS
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- MarketPlace (Showing Prosumers and Producers) allowing prosumers and consumers to buy energy.
+- Analytic dashboard that helps prosumers track how much energy has been sold and consumed, consumers track how much energy has been consumed and producers track how much energy has been sold. (A working graph also)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## TECHNICAL EXPLANATION OF WORKING PROCESS
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- A smart meter system that is made up of a microcontroller (arduino, raspberry pi) that calls the funtion of `SOL ConsumeElectriicty()` on the smart contract.
+- A smart contract that handles the way energy is being bought on the blockchain.
+- A Web Platform that helps interact with the smart contract and also a dashboard system showing users details about them or their companies.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🌊 Architectural Flow.
 
-## Learn More
+TRON POWER architectural flowchart (front-end).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![image](https://gateway.pinata.cloud/ipfs/QmRPXGnQQnVGrujViKBLfaxfzNb4jzveZFchwKeFc3EHEr?_gl=1*1ms4gc5*rs_ga*YWJkOGNiNjUtYjFjNy00YjMwLWE0YTktMTMzNjYzM2IzYTJh*rs_ga_5RMPXG14TE*MTY4MTA5MTk0NC41LjAuMTY4MTA5MTk0NC42MC4wLjA.)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## HOW TO RUN Web Platfrom
 
-### Code Splitting
+1. Git clone this repo
+2. Run `npm install` to install dependecies
+3. Run `npm start` to start app in development mode
+4. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Get [Nile testnet](https://nileex.io/join/getJoinPage) to test the platfrom.
 
-### Analyzing the Bundle Size
+## What is next for TRON POWER
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Mobile Application (REACT NATIVE)
+-
 
-### Making a Progressive Web App
+## 💻 Tools and Technologies.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- REACTJs : UI framework
+- Tailwind CSS : UI styling
+- Solidity : smart contract language
+- NODEJS : For backend and detecting events in the contract.
+- FireBase JS : Database.
+- Tronweb : connection to nodes, interacting with smart contract.
+- Nile Testnet : Contracts deployed on nile testnet.
 
-### Advanced Configuration
+## Developer Resources.
+[TronWeb: Understanding tronweb](https://developers.tron.network/reference/json-rpc-api-overview)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+[TRON: IDE](https://www.tronide.io/)
 
-### Deployment
+[TRONGRID](https://www.trongrid.io/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+[NILE scan: Explorer](https://nile.tronscan.org/)
 
-### `npm run build` fails to minify
+[Nile: Faucet](https://nileex.io/join/getJoinPage)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+## 🪪 License.
+
+Copyright Tippers 2022 [**MIT LICENSE**](/LICENSE)

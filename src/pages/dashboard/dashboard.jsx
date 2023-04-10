@@ -17,8 +17,8 @@ const Dashboard = () => {
     await tronWeb.request({
       method: "tron_requestAccounts",
     });
-    const { base58 } = window.tronWeb.defaultAddress;
-    const address = window.tronWeb.address.toHex(base58);
+    const { base58 } = window.tronWeb?.defaultAddress;
+    const address = window.tronWeb?.address.toHex(base58);
     console.log(address);
     setAdd(address);
     const { userData } = await getUserDetailsByWallet(address);
@@ -30,8 +30,8 @@ const Dashboard = () => {
   };
 
   const getD = () => {
-    const { base58 } = window.tronWeb.defaultAddress;
-    const address = window.tronWeb.address.toHex(base58);
+    const { base58 } = window.tronWeb?.defaultAddress;
+    const address = window.tronWeb?.address.toHex(base58);
     if (!address) return;
     const myCollection = doc(db, "users", address);
 

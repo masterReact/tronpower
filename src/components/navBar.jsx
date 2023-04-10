@@ -1,6 +1,6 @@
 import React, {  useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/abuadenergy.png";
+import logo from "../assets/LOGO.svg";
 import { checkIfUserExist } from "../utils/firebase";
 
 const NavBar = ({ addy }) => {
@@ -19,12 +19,11 @@ const NavBar = ({ addy }) => {
     await checkIfUserExist(address);
   };
   return (
-    <div className="grid grid-cols-7 bg-black p-1 px-[2rem] text-white">
+    <div className="grid grid-cols-7 bg-black py-2 px-[2rem] text-white">
       <div className="flex items-center lg:col-span-2 col-span-5">
         <Link to="/">
-          <img src={logo} alt="abuadenergy" className="w-[60px]" />
+          <img src={logo} alt="abuadenergy" className="w-[100px]" />
         </Link>
-        <p className="px-2 font-semibold text-[20px]">TRONPOWER</p>
       </div>
       <div className="hidden lg:flex col-span-3 text-[13px] justify-center items-center">
         <ul className="flex space-x-5 justify-center">

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import demoImage from "../../assets/user.png";
-import logo from "../../assets/abuadenergy.png";
+import logo from "../../assets/LOGO.svg";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { createUser, storage } from "../../utils/firebase";
 
