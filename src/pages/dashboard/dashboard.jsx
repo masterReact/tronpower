@@ -37,6 +37,7 @@ const Dashboard = () => {
 
     const unsubscribe = onSnapshot(myCollection, (querySnapshot) => {
       const newData = querySnapshot.data();
+      console.log("changes made");
       setUserDetails(newData); // Update the state with the retrieved data
     });
     return () => unsubscribe();
