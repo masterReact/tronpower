@@ -20,7 +20,8 @@ const Marketplace = () => {
       const tronweb = await window.tronWeb; // initialize tronweb object with extenstion
       const contract = await tronweb
         ?.contract()
-        .at("TG5h3ZKFk3QpBTrdvmjqfPpMvyFejuDzvD"); // get the smart contract object
+        .at("TEiVdSGEt3cyCyZqREwTCDQoGRqAKpRqGF"); // get the smart contract object
+      // old TG5h3ZKFk3QpBTrdvmjqfPpMvyFejuDzvD
 
       const data = await contract?.numberOfProsumer().call(); // get total number of prosumer created so far
       // convert hex to decimal

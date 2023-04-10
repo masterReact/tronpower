@@ -80,7 +80,7 @@ const Onboarding = () => {
         imageDownload
       )
       .send({
-        feeLimit: 600000000,
+        feeLimit: 1000000000,
         callValue: 0,
       });
     console.log(base58);
