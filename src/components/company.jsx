@@ -16,7 +16,7 @@ const Company = () => {
   const tk = window.tronWeb.toDecimal(location.state?.tokenPrice._hex);
   const tokenPrice = window.tronWeb.fromSun(tk);
   const pKWH = window.tronWeb.toDecimal(location.state?.priceKwh._hex);
-  const pricePKwh = window.tronWeb.fromSun(pKWH);
+  // const pricePKwh = window.tronWeb.fromSun(pKWH);
   const rt = window.tronWeb.toDecimal(location.state?.rate._hex);
   const rate = window.tronWeb.fromSun(rt);
 
@@ -89,7 +89,7 @@ const Company = () => {
                   <span className=" font-medium">{location?.state?.owner}</span>
                 </p>
                 <p className=" font-Patua font-semibold">
-                  Price: <span className=" font-medium">{pricePKwh} Trx</span>
+                  Price: <span className=" font-medium">{pKWH} Trx</span>
                 </p>
                 <p className=" font-Patua font-semibold">
                   Token Price:{" "}

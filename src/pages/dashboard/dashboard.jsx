@@ -32,19 +32,21 @@ const Dashboard = () => {
   };
 
   const getD = () => {
-    const tronweb = window.tronWeb;
-    if (!tronweb) return;
-    const { base58 } = tronweb.defaultAddress;
-    const address = tronweb.address.toHex(base58);
-    if (!address) return;
-    const myCollection = doc(db, "users", address);
+    try {
+      const tronweb = window.tronWeb;
+      if (!tronweb) return;
+      const { base58 } = tronweb.defaultAddress;
+      const address = tronweb.address.toHex(base58);
+      if (!address) return;
+      const myCollection = doc(db, "users", address);
 
-    const unsubscribe = onSnapshot(myCollection, (querySnapshot) => {
-      const newData = querySnapshot.data();
-      console.log("changes made");
-      setUserDetails(newData); // Update the state with the retrieved data
-    });
-    return () => unsubscribe();
+      const unsubscribe = onSnapshot(myCollection, (querySnapshot) => {
+        const newData = querySnapshot.data();
+        console.log("changes made");
+        setUserDetails(newData); // Update the state with the retrieved data
+      });
+      return () => unsubscribe();
+    } catch (error) {}
   };
 
   useEffect(

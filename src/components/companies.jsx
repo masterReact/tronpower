@@ -5,7 +5,7 @@ const Companies = ({ data }) => {
   const tk = window.tronWeb?.toDecimal(data?.tokenPrice);
   const tokenPrice = window.tronWeb?.fromSun(tk);
   const pKWH = window.tronWeb?.toDecimal(data?.priceKwh);
-  const pricePKwh = window.tronWeb?.fromSun(pKWH);
+  // const pricePKwh = window.tronWeb?.fromSun(pKWH);
   return (
     <div className="col-span-1 h-[30vh] bg-[#447113] hover:bg-[#447113]/80 transition-all duration-500 text-white flex flex-col py-3 px-3 rounded-sm mx-2 my-2">
       <div className="flex items-center justify-center flex-1">
@@ -25,7 +25,7 @@ const Companies = ({ data }) => {
             TokenPrice: <span className=" space-x-1">{tokenPrice}TRX</span>
           </p>
           <p className="text-sm font-Indie">
-            PricePerKwh: <span className=" space-x-1">{pricePKwh}TRX</span>
+            PricePerKwh: <span className=" space-x-1">{pKWH}TRX</span>
           </p>
         </div>
       </div>
