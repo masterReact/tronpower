@@ -59,8 +59,8 @@ const Onboarding = () => {
     if (userType === "consumer") {
       e.preventDefault();
       const tronweb = window.tronWeb;
-      const tPrice = tronweb.toSun(userData.tokenPrice);
-      const rate = tronweb.toSun(userData.rate);
+      // const tPrice = tronweb.toSun(userData.tokenPrice);
+      // const rate = tronweb.toSun(userData.rate);
       const { base58 } = window.tronWeb.defaultAddress;
       const address = tronweb.address.toHex(base58);
       await createUser(address, userName, userType, 0, imageDownload);

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import profile from "../assets/user.png";
 import LineChart from "./lineGraph";
 import TransactionItems from "./transactionItems";
@@ -7,7 +6,6 @@ import TransactionItems from "./transactionItems";
 const UserDashboard = ({ userData }) => {
   const [xaxis, setXaxis] = useState();
   const [yaxis, setYaxis] = useState();
-  const navigate = useNavigate();
   const [totalSales, setTotalSales] = useState();
   const [totalEnergy, setTotalEnergy] = useState();
   const [totalEnergyBal, setTotalEnergyBal] = useState();
