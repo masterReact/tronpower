@@ -62,7 +62,7 @@ const Company = () => {
   return (
     <>
       <NavBar addy={add} />
-      <div className="px-16 py-3">
+      <div className="md:px-16 py-3 px-4">
         <div className="bg-green-500 px-4 w-fit py-2 rounded-lg">
           <Link to="/marketplace" className="w-fit">
             <ArrowLeftIcon className="w-6 h-6 text-white" />
@@ -70,7 +70,7 @@ const Company = () => {
         </div>
         <div>
           <p className="text-center text-3xl font-Patua">Company details</p>
-          <div className="flex items-center py-16 space-x-4">
+          <div className="flex items-center py-16 space-x-4 md:flex-row flex-col">
             <div>
               <img
                 src={location?.state?.imgUrl || profile}
@@ -86,7 +86,9 @@ const Company = () => {
                 </p>
                 <p className=" font-Patua font-semibold">
                   Company Owner:{" "}
-                  <span className=" font-medium">{location?.state?.owner}</span>
+                  <span className="font-medium">
+                    {location?.state?.owner}
+                  </span>
                 </p>
                 <p className=" font-Patua font-semibold">
                   Price: <span className=" font-medium">{pKWH} Trx</span>

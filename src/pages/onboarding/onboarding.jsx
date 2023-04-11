@@ -56,51 +56,67 @@ const Onboarding = () => {
   };
 
   const finalSubmission = async (e) => {
-    if (userType === "consumer") {
-      e.preventDefault();
-      const tronweb = window.tronWeb;
-      // const tPrice = tronweb.toSun(userData.tokenPrice);
-      // const rate = tronweb.toSun(userData.rate);
-      const { base58 } = window.tronWeb.defaultAddress;
-      const address = tronweb.address.toHex(base58);
-      await createUser(address, userName, userType, 0, imageDownload);
-    } else {
-      e.preventDefault();
-      const tronweb = window.tronWeb;
-      const tPrice = tronweb.toSun(userData.tokenPrice);
-      const rate = tronweb.toSun(userData.rate);
-      const { base58 } = window.tronWeb.defaultAddress;
-      const address = tronweb.address.toHex(base58);
-      const contract = await window.tronWeb
-        .contract()
-        .at("TYuNs7TZEGavhaVwBPfjzDSYC6sGjuXk7Q");
+    try {
+      await window?.tronLink?.request({
+        method: "tron_requestAccounts",
+      });
 
-      const id = await contract.numberOfProsumer().call();
-      const iD = tronweb.toDecimal(id);
-      console.log(userData);
+      if (userType === "consumer") {
+        e.preventDefault();
+        const tronweb = window.tronWeb;
+        // const tPrice = tronweb.toSun(userData.tokenPrice);
+        // const rate = tronweb.toSun(userData.rate);
+        const { base58 } = window.tronWeb.defaultAddress;
+        const address = tronweb.address.toHex(base58);
+        await createUser(address, userName, userType, 0, imageDownload);
+      } else {
+        e.preventDefault();
+        const tronweb = window.tronWeb;
+        const tPrice = tronweb.toSun(userData.tokenPrice);
+        const rate = tronweb.toSun(userData.rate);
+        const { base58 } = window.tronWeb.defaultAddress;
+        const address = tronweb.address.toHex(base58);
+        const contract = await window.tronWeb
+          .contract()
+          .at("TYuNs7TZEGavhaVwBPfjzDSYC6sGjuXk7Q");
 
-      const hash = await contract
-        .createProsumer(address, userData.title, 1, tPrice, rate, imageDownload)
-        .send({
-          feeLimit: 1000000000,
-          callValue: 0,
-        });
-      console.log(base58);
-      console.log(hash);
-      await createUser(address, userName, userType, iD, imageDownload);
-    }
+        const id = await contract.numberOfProsumer().call();
+        const iD = tronweb.toDecimal(id);
+        console.log(userData);
+
+        const hash = await contract
+          .createProsumer(
+            address,
+            userData.title,
+            1,
+            tPrice,
+            rate,
+            imageDownload
+          )
+          .send({
+            feeLimit: 1000000000,
+            callValue: 0,
+          });
+        console.log(base58);
+        console.log(hash);
+        await createUser(address, userName, userType, iD, imageDownload);
+      }
+    } catch (error) {}
   };
 
   return (
-    <div className="lg:h-[100vh] grid grid-cols-8">
-      <div className="col-span-4 flex items-center justify-center flex-col">
+    <div className="lg:h-[100vh] md:grid grid-cols-8 flex">
+      <div className="col-span-4 md:flex items-center justify-center flex-col hidden">
         <img src={logo} alt="abuadenergy" className="w-[350px]" />
         <p className="text-[40px] font-Alkalami">Welcome to TRONPOWER</p>
         <p className="text-[13px]">Complete your account registeration</p>
       </div>
-      <div className="col-span-4 flex flex-col items-center justify-center">
-        <form className=" bg-slate-300 font-Alkalami p-2 rounded-sm shadow-2xl py-[2rem]">
-          <div className=" px-[2rem] h-[30vh] flex items-center space-x-6">
+      <div className="col-span-4 flex flex-col items-center justify-center mx-auto mt-10 md:mt-0">
+        <form className=" bg-black text-white font-Alkalami p-2 rounded-sm shadow-2xl py-[2rem] md:space-y-0 space-y-5">
+          <div className="md:hidden flex items-center justify-center">
+            <img src={logo} alt="abuadenergy" className="w-[300px] md:hidden" />
+          </div>
+          <div className="px-[2rem] md:h-[30vh] flex flex-col md:flex-row items-center md:space-x-6 space-y-6 md:space-y-0">
             <div className="">
               {imagelogo ? (
                 <img
@@ -196,32 +212,38 @@ const Onboarding = () => {
               </>
             )}
           </div>
-          <div className="space-x-3 p-2">
-            <label>PRODUCER</label>
-            <input
-              type="radio"
-              value="producer"
-              name="radBtn"
-              onChange={(e) => setUserType(e.target.value)}
-            />
-            <label>CONSUMER</label>
-            <input
-              type="radio"
-              value="consumer"
-              name="radBtn"
-              onChange={(e) => setUserType(e.target.value)}
-            />
-            <label>PROSUMER</label>
-            <input
-              type="radio"
-              value="prosumer"
-              name="radBtn"
-              onChange={(e) => setUserType(e.target.value)}
-            />
+          <div className="space-x-3 p-2 flex-wrap flex">
+            <div className="space-x-2">
+              <label>PRODUCER</label>
+              <input
+                type="radio"
+                value="producer"
+                name="radBtn"
+                onChange={(e) => setUserType(e.target.value)}
+              />
+            </div>
+            <div className="space-x-2">
+              <label>CONSUMER</label>
+              <input
+                type="radio"
+                value="consumer"
+                name="radBtn"
+                onChange={(e) => setUserType(e.target.value)}
+              />
+            </div>
+            <div className="space-x-2">
+              <label>PROSUMER</label>
+              <input
+                type="radio"
+                value="prosumer"
+                name="radBtn"
+                onChange={(e) => setUserType(e.target.value)}
+              />
+            </div>
           </div>
           <div>
             <p
-              className="text-center my-3 bg-[#78c621] mx-[10%] text-slate-200 p-1 cursor-pointer"
+              className="text-center my-3 bg-[#78c621] md:mx-[10%] text-white py-2 cursor-pointer"
               onClick={finalSubmission}
             >
               Complete account

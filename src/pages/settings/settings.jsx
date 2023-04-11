@@ -81,8 +81,8 @@ const Settings = () => {
             <p className="text-sm font-Pacifico">Tron Power</p>
           </div>
         </div>
-        <div className="flex justify-center h-28 items-center space-x-4 py-[7rem]">
-          <div className="bg-slate-100 w-[30%] flex flex-col px-4 py-4 space-y-4 shadow-2xl border-green-500 border rounded-sm">
+        <div className="flex justify-center md:h-28 items-center md:space-x-4 py-[7rem] flex-wrap space-y-3 md:space-y-0">
+          <div className="bg-slate-100 md:w-[30%] flex flex-col px-4 py-4 space-y-4 shadow-2xl border-green-500 border rounded-sm">
             <p className="text-center font-Pacifico font-medium">
               Update Tokens per KWH
             </p>
@@ -99,7 +99,7 @@ const Settings = () => {
               Update
             </button>
           </div>
-          <div className="bg-slate-100 w-[30%] flex flex-col px-4 py-4 space-y-4 shadow-2xl border-green-500 border rounded-sm">
+          <div className="bg-slate-100 md:w-[30%] flex flex-col px-4 py-4 space-y-4 shadow-2xl border-green-500 border rounded-sm">
             <p className="text-center font-Pacifico font-medium">Update Rate</p>
             <input
               type="number"

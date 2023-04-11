@@ -54,7 +54,7 @@ const NavBar = ({ addy }) => {
         {addy ? (
           <>
             <p
-              className="mr-[2rem] bg-[#447113] cursor-pointer transition-all hover:px-[1.1rem] hover:py-[0.6rem] px-4 rounded py-2 text-[13px]"
+              className="lg:mr-[2rem] bg-[#447113] cursor-pointer transition-all hover:px-[1.1rem] hover:py-[0.6rem] px-4 rounded py-2 text-[13px]"
               onClick={goToDashBoard}
             >
               <span className="mx-1">GoToDashboard</span>
@@ -64,14 +64,14 @@ const NavBar = ({ addy }) => {
           <>
             {address ? (
               <p
-                className="mr-[2rem] bg-[#447113] cursor-pointer transition-all hover:px-[1.1rem] hover:py-[0.6rem] px-4 rounded py-2 text-[13px]"
+                className="lg:mr-[2rem] bg-[#447113] cursor-pointer transition-all hover:px-[1.1rem] hover:py-[0.6rem] px-4 rounded py-2 text-[13px]"
                 onClick={goToDashBoard}
               >
                 <span className="mx-1">GoToDashboard</span>
               </p>
             ) : (
               <p
-                className="mr-[2rem] bg-[#447113] cursor-pointer transition-all hover:px-[1.1rem] hover:py-[0.6rem] px-4 rounded py-2 text-[13px]"
+                className="lg:mr-[2rem] bg-[#447113] cursor-pointer transition-all hover:px-[1.1rem] hover:py-[0.6rem] px-4 rounded py-2 text-[13px]"
                 onClick={connectWallet}
               >
                 Connect Wallet

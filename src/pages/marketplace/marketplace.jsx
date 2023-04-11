@@ -78,7 +78,7 @@ const Marketplace = () => {
         <p className="text-center font-semibold font-Indie py-1 pb-3">
           Energy companies ({companies?.length})
         </p>
-        <div className="bg-black h-[70vh]">
+        <div className="bg-black h-[70vh] overflow-y-scroll overflow-x-hidden">
           <div className="flex space-x-2 border border-green-500 py-1 w-fit items-center px-6 text-white rounded">
             <input
               type="text"

@@ -7,7 +7,7 @@ const Companies = ({ data }) => {
   const pKWH = window.tronWeb?.toDecimal(data?.priceKwh);
   // const pricePKwh = window.tronWeb?.fromSun(pKWH);
   return (
-    <div className="col-span-1 h-[30vh] bg-[#447113] hover:bg-[#447113]/80 transition-all duration-500 text-white flex flex-col py-3 px-3 rounded-sm mx-2 my-2">
+    <div className="col-span-1 bg-[#447113] hover:bg-[#447113]/80 transition-all duration-500 text-white flex flex-col py-3 px-3 rounded-sm mx-2 my-2">
       <div className="flex items-center justify-center flex-1">
         <img src={data?.imgUrl || image} alt="" className="h-[15vh]" />
       </div>

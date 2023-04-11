@@ -102,35 +102,35 @@ const Producer = ({ userData }) => {
           className="w-12 h-12 rounded-lg"
         />
       </div>
-      <div className="grid grid-cols-4 space-x-4 py-3 px-16">
-        <div className="col-span-1 px-2 flex flex-col justify-center h-[20vh] bg-green-200">
+      <div className="md:grid grid-cols-4 md:space-x-4 space-y-3 md:space-y-0 py-3 px-16">
+        <div className="col-span-1 px-2 flex flex-col justify-center md:h-[20vh] py-3 md:py-0 space-y-3 bg-green-200">
           <p className="text-2xl font-Cinzel font-semibold">
             Total Transactions
           </p>
           <p className="text-xl font-Patua">{userData?.order?.length || 0}</p>
         </div>
-        <div className="col-span-1 px-2 flex flex-col justify-center h-[20vh] bg-green-200">
+        <div className="col-span-1 px-2 flex flex-col justify-center md:h-[20vh] py-3 md:py-0 space-y-3 bg-green-200">
           <p className="text-2xl font-Cinzel font-semibold">
             Total Energy Sold
           </p>
           <p className="text-xl font-Patua">{totalEnergy || 0} KWh</p>
         </div>
-        <div className="col-span-1 px-2 flex flex-col justify-center h-[20vh] bg-green-200">
+        <div className="col-span-1 px-2 flex flex-col justify-center md:h-[20vh] py-3 md:py-0 space-y-3 bg-green-200">
           <p className="text-2xl font-Cinzel font-semibold">Total Sales</p>
           <p className="text-xl font-Patua">{totalSales || 0}TRX</p>
         </div>
-        <div className="col-span-1 px-2 flex flex-col justify-center h-[20vh] bg-green-200">
+        <div className="col-span-1 px-2 flex flex-col justify-center md:h-[20vh] py-3 md:py-0 space-y-3 bg-green-200">
           <p className="text-2xl font-Cinzel font-semibold">Tron Balance</p>
           <p className="text-xl font-Patua">{totalBal || 0} TRX</p>
         </div>
       </div>
-      <div className="grid grid-cols-5 space-x-8 px-16">
-        <div className="col-span-3 bg-green-100 h-[50vh]">
+      <div className="md:grid grid-cols-5 md:space-x-8 px-16 flex flex-wrap-reverse">
+        <div className="col-span-3 bg-green-100 h-[50vh] my-2 md:my-0">
           <div className="grid grid-cols-5 space-x-2 text-sm py-3 font-semibold">
             <div className="col-span-2 text-center">Transaction Hash</div>
-            <div className="col-span-1">Description</div>
+            <div className="col-span-1 hidden md:flex">Description</div>
             <div className="col-span-1">Amount</div>
-            <div className="col-span-1">Date</div>
+            <div className="col-span-1 hidden md:flex">Date</div>
           </div>
           <div className="h-[40vh] overflow-y-scroll">
             {userData?.order.map((item, i) => (
@@ -138,7 +138,7 @@ const Producer = ({ userData }) => {
             ))}
           </div>
         </div>
-        <div className="col-span-2 bg-green-100 h-[50vh]">
+        <div className="col-span-2 bg-green-100 w-full h-[50vh]">
           {xaxis && yaxis && <LineChart labels={xaxis} data={yaxis} />}
         </div>
       </div>
