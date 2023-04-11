@@ -70,8 +70,6 @@ export const createUser = async (userWallet, userName, type, id, userImage) => {
 };
 
 // check if userexist
-// the thing is running the if and checking and saying its true then mumu still dey run the else
-// so intead of going to dashboard its going to setup
 export const checkIfUserExist = async (userWallet) => {
   const querySnapShot = await getDocs(collection(db, "users"));
   let num = null;
