@@ -97,6 +97,9 @@ Get [Nile testnet](https://nileex.io/join/getJoinPage) to test the platfrom.
 ## Live Link
 
 [Live Server](https://tronpowerserver.onrender.com)
+[Live Link](https://tronpower.vercel.app/)
+
+For Testing it is advisable to use run the test server on local host because the live server may be down kindly check before testing
 
 ## Contracts Depployed while testing
 
