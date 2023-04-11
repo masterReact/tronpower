@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/LOGO.svg";
 import { checkIfUserExist } from "../utils/firebase";
@@ -7,16 +7,31 @@ const NavBar = ({ addy }) => {
   //----------States---------------//
   const [address, setAddress] = useState("");
 
-  const connectWallet = async () => {
-    const tronWeb = window.tronLink;
-    await tronWeb.request({
-      method: "tron_requestAccounts",
-    });
-    const {  base58 } = window.tronWeb.defaultAddress;
-    const address = window.tronWeb.address.toHex(base58);
-    setAddress(base58);
+  const goToDashBoard = async () => {
+    try {
+      const tronWeb = window.tronLink;
+      await tronWeb.request({
+        method: "tron_requestAccounts",
+      });
+      const { base58 } = window.tronWeb.defaultAddress;
+      const address = window.tronWeb.address.toHex(base58);
+      console.log(address);
+      setAddress(base58);
+      await checkIfUserExist(address);
+    } catch (error) {}
+  };
 
-    await checkIfUserExist(address);
+  const connectWallet = async () => {
+    try {
+      const tronWeb = window.tronLink;
+      await tronWeb.request({
+        method: "tron_requestAccounts",
+      });
+      const { base58 } = window.tronWeb.defaultAddress;
+      const address = window.tronWeb.address.toHex(base58);
+      console.log(address);
+      setAddress(base58);
+    } catch (error) {}
   };
   return (
     <div className="grid grid-cols-7 bg-black py-2 px-[2rem] text-white">
@@ -40,11 +55,9 @@ const NavBar = ({ addy }) => {
           <>
             <p
               className="mr-[2rem] bg-[#447113] cursor-pointer transition-all hover:px-[1.1rem] hover:py-[0.6rem] px-4 rounded py-2 text-[13px]"
-              // onClick={connectwallet}
+              onClick={goToDashBoard}
             >
-              <span className="mx-1">User:</span>
-              {addy?.substring(0, 5)}...
-              {addy?.substring(addy.length, addy.length - 5)}
+              <span className="mx-1">GoToDashboard</span>
             </p>
           </>
         ) : (
@@ -52,11 +65,9 @@ const NavBar = ({ addy }) => {
             {address ? (
               <p
                 className="mr-[2rem] bg-[#447113] cursor-pointer transition-all hover:px-[1.1rem] hover:py-[0.6rem] px-4 rounded py-2 text-[13px]"
-                // onClick={connectwallet}
+                onClick={goToDashBoard}
               >
-                <span className="mx-1">User:</span>
-                {address?.substring(0, 5)}...
-                {address?.substring(address.length, address.length - 5)}
+                <span className="mx-1">GoToDashboard</span>
               </p>
             ) : (
               <p

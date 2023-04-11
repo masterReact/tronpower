@@ -12,21 +12,23 @@ const Dashboard = () => {
   const [userDetails, setUserDetails] = useState();
   const db = getFirestore();
   const getAddy = async () => {
-    const not = toast.loading("⏳ Loading userdetails...");
-    const tronWeb = window.tronLink;
-    await tronWeb?.request({
-      method: "tron_requestAccounts",
-    });
-    const { base58 } = await window.tronWeb?.defaultAddress;
-    const address = await window.tronWeb?.address.toHex(base58);
-    console.log(address);
-    setAdd(address);
-    const { userData } = await getUserDetailsByWallet(address);
-    console.log(userData, "okay");
-    setUserDetails(userData);
-    toast.success("✅Done", {
-      id: not,
-    });
+    try {
+      const not = toast.loading("⏳ Loading userdetails...");
+      const tronWeb = window.tronLink;
+      await tronWeb.request({
+        method: "tron_requestAccounts",
+      });
+      const { base58 } = await window.tronWeb.defaultAddress;
+      const address = await window.tronWeb?.address.toHex(base58);
+      console.log(address);
+      setAdd(address);
+      const { userData } = await getUserDetailsByWallet(address);
+      console.log(userData, "okay");
+      setUserDetails(userData);
+      toast.success("✅Done", {
+        id: not,
+      });
+    } catch (error) {}
   };
 
   const getD = () => {
@@ -61,9 +63,9 @@ const Dashboard = () => {
           {userDetails?.type === "prosumer" ? (
             <Prosumer userData={userDetails} />
           ) : userDetails?.type === "consumer" ? (
-            <UserDashboard />
+            <UserDashboard userData={userDetails} />
           ) : (
-            <Producer />
+            <Producer userData={userDetails} />
           )}
         </>
       ) : (

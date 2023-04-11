@@ -56,36 +56,39 @@ const Onboarding = () => {
   };
 
   const finalSubmission = async (e) => {
-    e.preventDefault();
-    const tronweb = window.tronWeb;
-    const tPrice = tronweb.toSun(userData.tokenPrice);
-    // const pInKwh = tronweb.toSun(userData.priceInKwh);
-    const { base58 } = window.tronWeb.defaultAddress;
-    const address = tronweb.address.toHex(base58);
-    const contract = await window.tronWeb
-      .contract()
-      .at("TEiVdSGEt3cyCyZqREwTCDQoGRqAKpRqGF");
+    if (userType === "consumer") {
+      e.preventDefault();
+      const tronweb = window.tronWeb;
+      const tPrice = tronweb.toSun(userData.tokenPrice);
+      const rate = tronweb.toSun(userData.rate);
+      const { base58 } = window.tronWeb.defaultAddress;
+      const address = tronweb.address.toHex(base58);
+      await createUser(address, userName, userType, 0, imageDownload);
+    } else {
+      e.preventDefault();
+      const tronweb = window.tronWeb;
+      const tPrice = tronweb.toSun(userData.tokenPrice);
+      const rate = tronweb.toSun(userData.rate);
+      const { base58 } = window.tronWeb.defaultAddress;
+      const address = tronweb.address.toHex(base58);
+      const contract = await window.tronWeb
+        .contract()
+        .at("TYuNs7TZEGavhaVwBPfjzDSYC6sGjuXk7Q");
 
-    const id = await contract.numberOfProsumer().call();
-    const iD = tronweb.toDecimal(id);
-    console.log(userData);
+      const id = await contract.numberOfProsumer().call();
+      const iD = tronweb.toDecimal(id);
+      console.log(userData);
 
-    const hash = await contract
-      .createProsumer(
-        address,
-        userData.title,
-        1,
-        tPrice,
-        userData.rate,
-        imageDownload
-      )
-      .send({
-        feeLimit: 1000000000,
-        callValue: 0,
-      });
-    console.log(base58);
-    console.log(hash);
-    await createUser(address, userName, userType, iD, imageDownload);
+      const hash = await contract
+        .createProsumer(address, userData.title, 1, tPrice, rate, imageDownload)
+        .send({
+          feeLimit: 1000000000,
+          callValue: 0,
+        });
+      console.log(base58);
+      console.log(hash);
+      await createUser(address, userName, userType, iD, imageDownload);
+    }
   };
 
   return (
@@ -103,10 +106,10 @@ const Onboarding = () => {
                 <img
                   src={imagelogo}
                   alt=""
-                  className="w-[180px] h-[180px] p-[2rem] border-t-2 border-x-2"
+                  className="w-[180px] h-[180px] p-[2rem] border-t-2 border-green-500 border-x-2"
                 />
               ) : (
-                <div className="w-[180px] h-[180px] p-[2rem] border-t-2 border-x-2">
+                <div className="w-[180px] h-[180px] p-[2rem] border-t-2 border-green-500 border-x-2">
                   <img src={demoImage} alt="" />
                 </div>
               )}
@@ -126,9 +129,9 @@ const Onboarding = () => {
                 </p>
               </div>
             </div>
-            {userType === "prosumer" ? (
+            {userType === "prosumer" || userType === "producer" ? (
               <>
-                <div className="space-y-4">
+                <div className="space-y-4 font-sans">
                   <div className="px-[2rem] text-[13px] rounded-sm">
                     <p className="">Company Name</p>
                     <input
@@ -137,7 +140,7 @@ const Onboarding = () => {
                         setUserData({ ...userData, title: e.target.value })
                       }
                       type="text"
-                      placeholder="username"
+                      placeholder="Company Name"
                       className="px-2 p-1 text-[13px] w-[200px]"
                     />
                   </div>
@@ -149,7 +152,7 @@ const Onboarding = () => {
                         setUserData({ ...userData, priceInKwh: e.target.value })
                       }
                       type="number"
-                      placeholder="eg. country"
+                      placeholder="price in kwh default is 1"
                       className="px-2 p-1 text-[13px] w-[200px]"
                     />
                   </div>
@@ -161,7 +164,7 @@ const Onboarding = () => {
                         setUserData({ ...userData, tokenPrice: e.target.value })
                       }
                       type="number"
-                      placeholder="eg. country"
+                      placeholder="token price"
                       className="px-2 p-1 text-[13px] w-[200px]"
                     />
                   </div>
@@ -173,7 +176,7 @@ const Onboarding = () => {
                         setUserData({ ...userData, rate: e.target.value })
                       }
                       type="number"
-                      placeholder="eg. country"
+                      placeholder="rate"
                       className="px-2 p-1 text-[13px] w-[200px]"
                     />
                   </div>

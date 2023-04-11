@@ -20,7 +20,7 @@ const Marketplace = () => {
       const tronweb = await window.tronWeb; // initialize tronweb object with extenstion
       const contract = await tronweb
         ?.contract()
-        .at("TEiVdSGEt3cyCyZqREwTCDQoGRqAKpRqGF"); // get the smart contract object
+        .at("TYuNs7TZEGavhaVwBPfjzDSYC6sGjuXk7Q"); // get the smart contract object
       // old TG5h3ZKFk3QpBTrdvmjqfPpMvyFejuDzvD
 
       const data = await contract?.numberOfProsumer().call(); // get total number of prosumer created so far

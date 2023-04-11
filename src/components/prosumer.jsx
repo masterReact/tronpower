@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import profile from "../assets/user.png";
 import LineChart from "./lineGraph";
 import TransactionItems from "./transactionItems";
@@ -14,41 +14,43 @@ const Prosumer = ({ userData }) => {
   const [totalBal, setTotalBal] = useState();
 
   const getGraph = () => {
-    const dataX = [];
-    const dataY = [];
-    const dataE = [];
-    //eslint-disable-next-line
-    userData?.order.map((item) => {
-      const ne = new Date(item?.date);
-      let dateStr =
-        ne.getDate() + "/" + (ne.getMonth() + 1) + "/" + ne.getFullYear();
-      let d1 = window.tronWeb.fromSun(item?.amt);
-      dataX.push(dateStr);
-      dataE.push(item?.kwh);
-      dataY.push(d1);
-    });
-    const tot = dataY
-      .map(function (elt) {
-        // assure the value can be converted into an integer
-        return /^\d+$/.test(elt) ? parseInt(elt) : 0;
-      })
-      .reduce(function (a, b) {
-        // sum all resulting numbers
-        return a + b;
+    try {
+      const dataX = [];
+      const dataY = [];
+      const dataE = [];
+      //eslint-disable-next-line
+      userData?.order.map((item) => {
+        const ne = new Date(item?.date);
+        let dateStr =
+          ne.getDate() + "/" + (ne.getMonth() + 1) + "/" + ne.getFullYear();
+        let d1 = window.tronWeb.fromSun(item?.amt);
+        dataX.push(dateStr);
+        dataE.push(item?.kwh);
+        dataY.push(d1);
       });
-    const eEnergy = dataE
-      .map(function (elt) {
-        // assure the value can be converted into an integer
-        return /^\d+$/.test(elt) ? parseInt(elt) : 0;
-      })
-      .reduce(function (a, b) {
-        // sum all resulting numbers
-        return a + b;
-      });
-    setTotalEnergy(eEnergy);
-    setTotalSales(tot);
-    setXaxis(dataX);
-    setYaxis(dataY);
+      const tot = dataY
+        .map(function (elt) {
+          // assure the value can be converted into an integer
+          return /^\d+$/.test(elt) ? parseInt(elt) : 0;
+        })
+        .reduce(function (a, b) {
+          // sum all resulting numbers
+          return a + b;
+        });
+      const eEnergy = dataE
+        .map(function (elt) {
+          // assure the value can be converted into an integer
+          return /^\d+$/.test(elt) ? parseInt(elt) : 0;
+        })
+        .reduce(function (a, b) {
+          // sum all resulting numbers
+          return a + b;
+        });
+      setTotalEnergy(eEnergy);
+      setTotalSales(tot);
+      setXaxis(dataX);
+      setYaxis(dataY);
+    } catch (error) {}
   };
 
   const getBal = async () => {
@@ -64,7 +66,7 @@ const Prosumer = ({ userData }) => {
     setTotalBal(bal);
     const contract = await window.tronWeb
       .contract()
-      .at("TG5h3ZKFk3QpBTrdvmjqfPpMvyFejuDzvD");
+      .at("TYuNs7TZEGavhaVwBPfjzDSYC6sGjuXk7Q");
     const eBal = window.tronWeb.toDecimal(
       await contract.balances(address).call()
     );
@@ -89,34 +91,34 @@ const Prosumer = ({ userData }) => {
 
   return (
     <div className="pt-14">
-      <div
-        className="px-16 flex items-center justify-end"
-        onClick={handleClicked}
-      >
-        <img
-          src={userData?.userImage || profile}
-          alt="profile"
-          className="w-12 h-12 rounded-lg"
-        />
+      <div>
+        <div className="px-16 flex items-center justify-end">
+          <img
+            src={userData?.userImage || profile}
+            alt="profile"
+            className="w-12 h-12 rounded-lg cursor-pointer"
+            onClick={handleClicked}
+          />
+        </div>
       </div>
       <div className="grid grid-cols-4 space-x-4 py-3 px-16">
         <div className="col-span-1 px-2 flex flex-col justify-center h-[20vh] bg-green-200">
           <p className="text-2xl font-Cinzel font-semibold">
             Total Energy Sold
           </p>
-          <p className="text-xl font-Patua">{totalEnergy} KWh</p>
+          <p className="text-xl font-Patua">{totalEnergy || 0} KWh</p>
         </div>
         <div className="col-span-1 px-2 flex flex-col justify-center h-[20vh] bg-green-200">
           <p className="text-2xl font-Cinzel font-semibold">Total Sales</p>
-          <p className="text-xl font-Patua">{totalSales}TRX</p>
+          <p className="text-xl font-Patua">{totalSales || 0}TRX</p>
         </div>
         <div className="col-span-1 px-2 flex flex-col justify-center h-[20vh] bg-green-200">
           <p className="text-2xl font-Cinzel font-semibold">Tron Balance</p>
-          <p className="text-xl font-Patua">{totalBal} TRX</p>
+          <p className="text-xl font-Patua">{totalBal || 0} TRX</p>
         </div>
         <div className="col-span-1 px-2 flex flex-col justify-center h-[20vh] bg-green-200">
           <p className="text-2xl font-Cinzel font-semibold">Energy balance</p>
-          <p className="text-xl font-Patua">{totalEnergyBal} kwh</p>
+          <p className="text-xl font-Patua">{totalEnergyBal || 0} kwh</p>
         </div>
       </div>
       <div className="grid grid-cols-5 space-x-8 px-16">

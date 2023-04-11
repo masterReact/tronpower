@@ -131,11 +131,11 @@ export const buyEnergy = async (userWallet, amount, energyInKw, hash, pin) => {
       .then(async () => {
         const array = docSnap.data().order;
         array.push({
-          energyBought: energyInKw,
-          transactionAmount: amount,
-          transactionHash: hash,
-          transactionDate: new Date(),
-          energyPin: pin,
+          kwh: energyInKw,
+          des: pin,
+          hash: hash,
+          date: Date.now(),
+          amt: amount,
         });
         await updateDoc(docRef, {
           order: array,

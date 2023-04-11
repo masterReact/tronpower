@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/navBar";
 import mobile from "../../assets/mobile.svg";
 import ele from "../../assets/ele.png";
 import { Typewriter } from "react-simple-typewriter";
 
 const HomePage = () => {
+  const [address, setAddress] = useState("");
+
+  const connectWallet = async () => {
+    try {
+      const tronWeb = window.tronLink;
+      await tronWeb?.request({
+        method: "tron_requestAccounts",
+      });
+      const { base58 } = window.tronWeb?.defaultAddress;
+      //  const address = window.tronWeb.address.toHex(base58);
+      setAddress(base58);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    connectWallet();
+  }, []);
+
   return (
     <div className="h-screen">
-      <Header />
+      <Header addy={address} />
       <img
         src={ele}
         alt="ele"

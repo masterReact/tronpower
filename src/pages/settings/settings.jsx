@@ -16,7 +16,7 @@ const Settings = () => {
       const tronweb = window.tronWeb;
       const contract = await tronweb
         .contract()
-        .at("TNvxx246GX8Ne9qPtcMihpFa6JQjsHJmC3");
+        .at("TYuNs7TZEGavhaVwBPfjzDSYC6sGjuXk7Q");
       const response = await contract
         .updateRate(newRate, location.state?.id)
         .send({
@@ -32,7 +32,7 @@ const Settings = () => {
       const tronweb = window.tronWeb;
       const contract = await tronweb
         .contract()
-        .at("TNvxx246GX8Ne9qPtcMihpFa6JQjsHJmC3");
+        .at("TYuNs7TZEGavhaVwBPfjzDSYC6sGjuXk7Q");
 
       const response = await contract
         .updateTokensPerKWH(newTKKWH, location.state?.id)

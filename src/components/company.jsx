@@ -1,7 +1,9 @@
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 import { Link, useLocation, useParams } from "react-router-dom";
 import profile from "../assets/user.png";
+import { buyEnergy } from "../utils/firebase";
 import NavBar from "./navBar";
 
 const Company = () => {
@@ -19,6 +21,7 @@ const Company = () => {
   const rate = window.tronWeb.fromSun(rt);
 
   const buyElectricity = async () => {
+    const buy = toast.loading("⏳ Buying electricity...");
     const tronWeb = window.tronLink;
     await tronWeb.request({
       method: "tron_requestAccounts",
@@ -29,14 +32,30 @@ const Company = () => {
     console.log(location.state?.id);
     const contract = await window.tronWeb
       .contract()
-      .at("TEiVdSGEt3cyCyZqREwTCDQoGRqAKpRqGF");
+      .at("TYuNs7TZEGavhaVwBPfjzDSYC6sGjuXk7Q");
 
     const amount = await window.tronWeb.toSun(tokenPrice * value);
-
+    toast.loading("✍ Signing transaction...", {
+      id: buy,
+    });
     const response = await contract.buyElectricity(location.state?.id).send({
       feeLimit: 600000000,
       callValue: amount,
     });
+
+    await buyEnergy(address, amount, value, response, "Bought Electricity")
+      .then((res) => {
+        toast.success("✅ Done", {
+          id: buy,
+        });
+        console.log("Done");
+      })
+      .catch((error) => {
+        toast.error("❌ Failed", {
+          id: buy,
+        });
+        console.log(error.message);
+      });
     console.log(response);
   };
 

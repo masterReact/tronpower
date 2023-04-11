@@ -14,41 +14,43 @@ const Producer = ({ userData }) => {
   const [totalBal, setTotalBal] = useState();
 
   const getGraph = () => {
-    const dataX = [];
-    const dataY = [];
-    const dataE = [];
-    //eslint-disable-next-line
-    userData?.order.map((item) => {
-      const ne = new Date(item?.date);
-      let dateStr =
-        ne.getDate() + "/" + (ne.getMonth() + 1) + "/" + ne.getFullYear();
-      let d1 = window.tronWeb.fromSun(item?.amt);
-      dataX.push(dateStr);
-      dataE.push(item?.kwh);
-      dataY.push(d1);
-    });
-    const tot = dataY
-      .map(function (elt) {
-        // assure the value can be converted into an integer
-        return /^\d+$/.test(elt) ? parseInt(elt) : 0;
-      })
-      .reduce(function (a, b) {
-        // sum all resulting numbers
-        return a + b;
+    try {
+      const dataX = [];
+      const dataY = [];
+      const dataE = [];
+      //eslint-disable-next-line
+      userData?.order.map((item) => {
+        const ne = new Date(item?.date);
+        let dateStr =
+          ne.getDate() + "/" + (ne.getMonth() + 1) + "/" + ne.getFullYear();
+        let d1 = window.tronWeb.fromSun(item?.amt);
+        dataX.push(dateStr);
+        dataE.push(item?.kwh);
+        dataY.push(d1);
       });
-    const eEnergy = dataE
-      .map(function (elt) {
-        // assure the value can be converted into an integer
-        return /^\d+$/.test(elt) ? parseInt(elt) : 0;
-      })
-      .reduce(function (a, b) {
-        // sum all resulting numbers
-        return a + b;
-      });
-    setTotalEnergy(eEnergy);
-    setTotalSales(tot);
-    setXaxis(dataX);
-    setYaxis(dataY);
+      const tot = dataY
+        ?.map(function (elt) {
+          // assure the value can be converted into an integer
+          return /^\d+$/.test(elt) ? parseInt(elt) : 0;
+        })
+        ?.reduce(function (a, b) {
+          // sum all resulting numbers
+          return a + b;
+        });
+      const eEnergy = dataE
+        .map(function (elt) {
+          // assure the value can be converted into an integer
+          return /^\d+$/.test(elt) ? parseInt(elt) : 0;
+        })
+        ?.reduce(function (a, b) {
+          // sum all resulting numbers
+          return a + b;
+        });
+      setTotalEnergy(eEnergy);
+      setTotalSales(tot);
+      setXaxis(dataX);
+      setYaxis(dataY);
+    } catch (error) {}
   };
 
   const getBal = async () => {
@@ -64,7 +66,7 @@ const Producer = ({ userData }) => {
     setTotalBal(bal);
     const contract = await window.tronWeb
       .contract()
-      .at("TG5h3ZKFk3QpBTrdvmjqfPpMvyFejuDzvD");
+      .at("TYuNs7TZEGavhaVwBPfjzDSYC6sGjuXk7Q");
     const eBal = window.tronWeb.toDecimal(
       await contract.balances(address).call()
     );
@@ -105,21 +107,21 @@ const Producer = ({ userData }) => {
           <p className="text-2xl font-Cinzel font-semibold">
             Total Transactions
           </p>
-          <p className="text-xl font-Patua">{userData?.order?.length}</p>
+          <p className="text-xl font-Patua">{userData?.order?.length || 0}</p>
         </div>
         <div className="col-span-1 px-2 flex flex-col justify-center h-[20vh] bg-green-200">
           <p className="text-2xl font-Cinzel font-semibold">
             Total Energy Sold
           </p>
-          <p className="text-xl font-Patua">{totalEnergy} KWh</p>
+          <p className="text-xl font-Patua">{totalEnergy || 0} KWh</p>
         </div>
         <div className="col-span-1 px-2 flex flex-col justify-center h-[20vh] bg-green-200">
           <p className="text-2xl font-Cinzel font-semibold">Total Sales</p>
-          <p className="text-xl font-Patua">{totalSales}TRX</p>
+          <p className="text-xl font-Patua">{totalSales || 0}TRX</p>
         </div>
         <div className="col-span-1 px-2 flex flex-col justify-center h-[20vh] bg-green-200">
           <p className="text-2xl font-Cinzel font-semibold">Tron Balance</p>
-          <p className="text-xl font-Patua">{totalBal} TRX</p>
+          <p className="text-xl font-Patua">{totalBal || 0} TRX</p>
         </div>
       </div>
       <div className="grid grid-cols-5 space-x-8 px-16">

@@ -67,8 +67,10 @@ Get [Nile testnet](https://nileex.io/join/getJoinPage) to test the platfrom.
 
 ## What is next for TRON POWER
 
-- Mobile Application (REACT NATIVE)
--
+- Mobile Application (REACT NATIVE).
+- Custom Token : Each Prosumer / Producer will be able to create his/her marketplace with his/her own custom token and not just TRON.
+- Mainnet : Deploying and verifing contract on Mainnet.
+- Smart Meter System (SMS) : Building of smart meter and marketing with real estate companies.
 
 ## 💻 Tools and Technologies.
 
@@ -81,6 +83,7 @@ Get [Nile testnet](https://nileex.io/join/getJoinPage) to test the platfrom.
 - Nile Testnet : Contracts deployed on nile testnet.
 
 ## Developer Resources.
+
 [TronWeb: Understanding tronweb](https://developers.tron.network/reference/json-rpc-api-overview)
 
 [TRON: IDE](https://www.tronide.io/)
@@ -92,10 +95,14 @@ Get [Nile testnet](https://nileex.io/join/getJoinPage) to test the platfrom.
 [Nile: Faucet](https://nileex.io/join/getJoinPage)
 
 ## Live Link
+
 [Live Server](https://tronpowerserver.onrender.com)
 
+## Contracts Depployed while testing
 
-
+[Contract 1](https://nile.tronscan.org/#/contract/TEiVdSGEt3cyCyZqREwTCDQoGRqAKpRqGF)
+[Contract 2](https://nile.tronscan.org/#/contract/TG5h3ZKFk3QpBTrdvmjqfPpMvyFejuDzvD)
+[Contract 3 current contract being used](https://nile.tronscan.org/#/contract/TYuNs7TZEGavhaVwBPfjzDSYC6sGjuXk7Q)
 
 ## 🪪 License.
 
