@@ -157,7 +157,7 @@ const Onboarding = () => {
                       }
                       type="text"
                       placeholder="Company Name"
-                      className="px-2 p-1 text-[13px] w-[200px]"
+                      className="px-2 p-1 text-[13px] w-[200px] text-black"
                     />
                   </div>
                   <div className="px-[2rem] text-[13px] rounded-sm">
@@ -169,7 +169,7 @@ const Onboarding = () => {
                       }
                       type="number"
                       placeholder="price in kwh default is 1"
-                      className="px-2 p-1 text-[13px] w-[200px]"
+                      className="px-2 p-1 text-[13px] w-[200px] text-black"
                     />
                   </div>
                   <div className="px-[2rem] text-[13px] rounded-sm">
@@ -181,7 +181,7 @@ const Onboarding = () => {
                       }
                       type="number"
                       placeholder="token price"
-                      className="px-2 p-1 text-[13px] w-[200px]"
+                      className="px-2 p-1 text-[13px] w-[200px] text-black"
                     />
                   </div>
                   <div className="px-[2rem] text-[13px] rounded-sm">
@@ -193,7 +193,7 @@ const Onboarding = () => {
                       }
                       type="number"
                       placeholder="rate"
-                      className="px-2 p-1 text-[13px] w-[200px]"
+                      className="px-2 p-1 text-[13px] w-[200px] text-black"
                     />
                   </div>
                 </div>
