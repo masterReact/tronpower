@@ -1,6 +1,6 @@
 ## TRON POWER💡
 
-Tron Power is a energy trading platform that encorages buying and selling of renewable energy.
+Tron Power is an energy trading platform that encorages buying and selling of renewable energy.
 
 ![image](https://gateway.pinata.cloud/ipfs/QmZby1gWAKWdkGJcaWFE83ZGTBTQCLDTdQZah5QRzFrGGN?_gl=1*cncir5*rs_ga*YWJkOGNiNjUtYjFjNy00YjMwLWE0YTktMTMzNjYzM2IzYTJh*rs_ga_5RMPXG14TE*MTY4MTA5MTk0NC41LjAuMTY4MTA5MTk0NC42MC4wLjA.)
 
@@ -101,7 +101,7 @@ Get [Nile testnet](https://nileex.io/join/getJoinPage) to test the platfrom.
 
 For Testing it is advisable to use run the test server on local host because the live server may be down kindly check before testing
 
-## Contracts Depployed while testing
+## Contracts Depployed while testing.
 
 [Contract 1](https://nile.tronscan.org/#/contract/TEiVdSGEt3cyCyZqREwTCDQoGRqAKpRqGF)
 [Contract 2](https://nile.tronscan.org/#/contract/TG5h3ZKFk3QpBTrdvmjqfPpMvyFejuDzvD)
@@ -109,4 +109,4 @@ For Testing it is advisable to use run the test server on local host because the
 
 ## 🪪 License.
 
-Copyright Tron Power 2022 [**MIT LICENSE**](/LICENSE)
+Copyright Tron Power 2023 [**MIT LICENSE**](/LICENSE)
