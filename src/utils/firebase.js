@@ -55,9 +55,12 @@ export const createUser = async (userWallet, userName, type, id, userImage) => {
         userImage,
         order: [
           {
-            transactionHash: "New User Reward",
-            energy: "100 USDT",
-            amount: "",
+            kwh: "2Kwh",
+            des: "Demo",
+            hash: "demo hash",
+            date: Date.now(), // start here
+            bought: 234,
+            sold: 100,
           },
         ],
       });
@@ -121,12 +124,19 @@ export const getUserDetailsByWallet = async (userWallet) => {
 };
 
 // Buy energy in the buy page
-export const buyEnergy = async (userWallet, amount, energyInKw, hash, pin) => {
+export const buyEnergy = async (
+  userWallet,
+  amount,
+  energyInKw,
+  hash,
+  pin,
+  soldAmount
+) => {
   const docRef = doc(db, "users", userWallet);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
     await updateDoc(docRef, {
-      totalEnergy: increment(energyInKw),
+      // totalEnergy: increment(energyInKw),
     })
       .then(async () => {
         const array = docSnap.data().order;
@@ -134,15 +144,16 @@ export const buyEnergy = async (userWallet, amount, energyInKw, hash, pin) => {
           kwh: energyInKw,
           des: pin,
           hash: hash,
-          date: Date.now(),
-          amt: amount,
+          date: Date.now(), // start here
+          bought: amount,
+          sold: 0,
         });
         await updateDoc(docRef, {
           order: array,
         })
-          .then(() => {
-            console.log("transaction completed successfully");
-          })
+          .then(() => { 
+
+            console.log("transaction completed successfully");          })
           .catch((e) => {
             console.log(e.me, "Error from appending array");
           });

@@ -22,7 +22,7 @@ const UserDashboard = ({ userData }) => {
         const ne = new Date(item?.date);
         let dateStr =
           ne.getDate() + "/" + (ne.getMonth() + 1) + "/" + ne.getFullYear();
-        let d1 = window.tronWeb.fromSun(item?.amt);
+        let d1 = window.tronWeb.fromSun(item?.bought);
         dataX.push(dateStr);
         dataE.push(item?.kwh);
         dataY.push(d1);

@@ -14,6 +14,7 @@ const Prosumer = ({ userData }) => {
   const [totalBal, setTotalBal] = useState();
 
   const getGraph = () => {
+    console.log(userData);
     try {
       const dataX = [];
       const dataY = [];
@@ -23,7 +24,7 @@ const Prosumer = ({ userData }) => {
         const ne = new Date(item?.date);
         let dateStr =
           ne.getDate() + "/" + (ne.getMonth() + 1) + "/" + ne.getFullYear();
-        let d1 = window.tronWeb.fromSun(item?.amt);
+        let d1 = window.tronWeb.fromSun(item?.sold);
         dataX.push(dateStr);
         dataE.push(item?.kwh);
         dataY.push(d1);
@@ -51,7 +52,7 @@ const Prosumer = ({ userData }) => {
       setXaxis(dataX);
       setYaxis(dataY);
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
   };
 
